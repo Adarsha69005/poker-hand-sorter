@@ -3,3 +3,8 @@
 
 `node index.js`
 
+## Output
+`Player 1: 263
+ Player 2: 237`
+`
+
