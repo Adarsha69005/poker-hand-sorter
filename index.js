@@ -70,7 +70,7 @@ let player2_count = 0
 try {
     let data = fs.readFileSync('poker-hands.txt', 'utf8','r')
         let pokerhands = data.toString().split('\n');
-        for (i=0;pokerhands.length - 1; i++) {
+        for (i=0;i<pokerhands.length - 1; i++) {
             let handsvalue = hands(pokerhands[i]);
             let valueofhands = compareHands(handsvalue[0],handsvalue[1])
             if(valueofhands === 1) {
