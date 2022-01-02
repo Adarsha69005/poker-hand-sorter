@@ -1,7 +1,8 @@
 var fs = require('fs');
 
 const order = "23456789TJQKA";
-
+// fuction to calculate all the possible hands with one player possible
+// like flush, straight, two pair, one pair. 
 function getHandDetails(hand) {
     const cards = hand.split(" ");
     const faces = cards.map(a => String.fromCharCode([77 - order.indexOf(a[0])]));
@@ -36,7 +37,7 @@ function getHandDetails(hand) {
         }
 
 }
-
+//compares player 1 and player 2 cards
 function compareHands(h1, h2) {
     let d1 = getHandDetails(h1);
     let d2 = getHandDetails(h2);
@@ -51,6 +52,7 @@ function compareHands(h1, h2) {
     return d1.rank < d2.rank ? 1 : 0
 }
 
+// function to seperate the first 5 cards to player1 and last 5 cards to player2
 function hands(string) {
     let middle = Math.floor(string.length / 2);
     let before = string.lastIndexOf(' ', middle);
@@ -70,7 +72,7 @@ let player2_count = 0
 try {
     let data = fs.readFileSync('poker-hands.txt', 'utf8','r')
         let pokerhands = data.toString().split('\n');
-        for (i=0;i<pokerhands.length - 1; i++) {
+        for (i=0;i<pokerhands.length; i++) {
             let handsvalue = hands(pokerhands[i]);
             let valueofhands = compareHands(handsvalue[0],handsvalue[1])
             if(valueofhands === 1) {
